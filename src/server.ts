@@ -2,6 +2,7 @@ import express, { Application } from "express";
 import cors from "cors";
 
 import { routes } from "./routes";
+import { AppDataSource } from "./database/data-source";
 
 class App {
   public app: Application;
@@ -16,6 +17,14 @@ class App {
     this.app.use(express.json());
   }
 }
+
+AppDataSource.initialize()
+  .then(() => {
+    console.log("✅ Data Source has been initialized!");
+  })
+  .catch((err) => {
+    console.error("❌ Error during Data Source initialization", err);
+  });
 
 const port: number = 8000;
 const app = new App().app;
