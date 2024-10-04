@@ -9,10 +9,13 @@ export class User {
   id: string;
 
   @Column()
-  userName: string;
+  name: string;
 
   @Column()
-  userNickname: string;
+  username: string;
+
+  @Column()
+  cpf: string;
 
   @Column()
   email: string;
